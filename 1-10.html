@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>avatar</title>
+
+  <head>
+    <style>
+      body {
+        margin: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-top: 50px;
+      }
+
+      img {
+        --size: 280px;
+
+        --backgroundColor: #ecd078;
+        --borderColor: #c02942;
+
+        --borderWidth: 5px;
+
+        --scaleTimes: 1;
+        /* 放大倍数 */
+
+        --backgroundOption: content-box no-repeat center / calc(100% / var(--scaleTimes)) 100%;
+
+        --shrink: calc((var(--size) / var(--scaleTimes) - var(--size)) / 2 - var(--borderWidth));
+
+        width: var(--size);
+        height: var(--size);
+
+        cursor: pointer;
+        border-radius: 50%;
+
+        background: radial-gradient(circle closest-side,
+            var(--backgroundColor) calc(99% - var(--borderWidth)),
+            var(--borderColor) calc(99% - var(--borderWidth)),
+            var(--borderColor) 100%, transparent 100%) var(--backgroundOption);
+
+        transition: 0.5s;
+        transform: scale(var(--scaleTimes));
+
+        outline: var(--borderWidth) solid var(--borderColor);
+        border-radius: 0 0 999px 999px;
+        outline-offset: var(--shrink);
+
+        padding-top: 100px;
+
+        -webkit-mask: linear-gradient(#000 0 0) no-repeat center calc(0px - var(--shrink)) / calc(100% / var(--scaleTimes)) 50%, radial-gradient(circle closest-side, #000 99%, transparent) var(--backgroundOption);
+
+        /* background: linear-gradient(#000 0 0) no-repeat center calc(0px - var(--shrink)) / calc(100% / var(--scaleTimes)) 50%; */
+      }
+
+      img:hover {
+        /* transform: scale(1.35); */
+        --scaleTimes: 1.35;
+      }
+    </style>
+  </head>
+</head>
+
+<body>
+  <img src="./avatar.png" />
+</body>
+
+</html>
